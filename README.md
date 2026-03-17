@@ -5,7 +5,6 @@ A simple Laravel-based dashboard to manage promotional offers and expose them vi
 ## Features
 
 * Add and delete offers from dashboard
-* Mobile responsive UI
 * API endpoint to fetch offers
 * API key validation
 * Returns only **active** and **non-expired** offers
@@ -28,7 +27,7 @@ Follow the steps below to run the project locally.
 
 ## 1. Clone the Repository
 
-git clone https://github.com/YOUR_USERNAME/offers-dashboard.git
+git clone https://github.com/Faizatgit/Offers-Dashboard
 
 cd offers-dashboard
 
@@ -82,6 +81,9 @@ Example request:
 
 http://127.0.0.1:8000/api/offers
 
+Header
+X-API-KEY: offers_secret_key
+
 ## Response
 
 Returns only:
@@ -91,18 +93,20 @@ Returns only:
 
 Example response:
 
-[
-    {
-      "id": 4,
-      "title": "Flipcart",
-      "description": "Description",
-      "expiry_date": "2026-03-18",
-      "active": 1,
-      "created_at": "2026-03-16T20:05:41.000000Z",
-      "updated_at": "2026-03-16T20:05:41.000000Z"
-    }
-]
-
+{
+    "status": "success",
+    "data": [
+        {
+            "id": 1,
+            "title": "50 % off",
+            "description": "get discount upto 50% in selected electrinic items",
+            "expiry_date": "2026-03-19",
+            "active": 1,
+            "created_at": "2026-03-17T00:41:24.000000Z",
+            "updated_at": "2026-03-17T00:41:24.000000Z"
+        }
+    ]
+}
 ---
 
 # Project Structure
@@ -120,3 +124,14 @@ public/js
 
 Mohammad Faizan Raza
 
+## Live Demo
+
+**Dashboard:**  
+https://offers-dashboard.onrender.com/
+
+**API Endpoint:**  
+https://offers-dashboard.onrender.com/api/offers
+
+Add the following header to access the API:
+
+X-API-KEY: offers_secret_key
