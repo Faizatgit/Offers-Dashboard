@@ -6,7 +6,37 @@
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+<style>
+    
+body{
+background:#f4f6f9;
+}
+
+.dashboard-card{
+border-radius:12px;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
+padding:25px;
+background:white;
+}
+
+.table thead{
+background:#0d6efd;
+color:white;
+}
+
+.table tbody tr:hover{
+background:#f2f7ff;
+}
+
+.badge-active{
+background:#28a745;
+}
+
+.badge-inactive{
+background:#dc3545;
+}
+
+</style>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -152,7 +182,30 @@ Save Offer
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="{{ asset('js/dashboard.js') }}"></script>
+<script>
+    
+function deleteOffer(id){
+
+Swal.fire({
+title:'Delete Offer?',
+text:'This action cannot be undone',
+icon:'warning',
+showCancelButton:true,
+confirmButtonColor:'#d33',
+confirmButtonText:'Yes Delete',
+cancelButtonText:'Cancel'
+}).then((result)=>{
+
+if(result.isConfirmed){
+
+document.getElementById('delete-form-'+id).submit()
+
+}
+
+})
+
+}
+</script>
 
 </body>
 </html>
