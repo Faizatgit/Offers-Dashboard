@@ -17,17 +17,23 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copy project
 COPY . .
 
-# Install Laravel dependencies
+# Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Create SQLite database
+# Create env file
+RUN cp .env.example .env
+
+# Create sqlite database
 RUN touch database/database.sqlite
 
-# Generate Laravel key
+# Generate app key
 RUN php artisan key:generate
 
 # Run migrations
-RUN php artisan migrate
+RUN php artisan migrate --force
+
+# Fix permissions
+RUN chmod -R 777 storage bootstrap/cache
 
 EXPOSE 10000
 
